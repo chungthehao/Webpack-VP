@@ -1,0 +1,24 @@
+{
+  "name": "Webpack-VP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chungthehao/Webpack-VP.git"
+  },
+  "keywords": [],
+  "author": "Henry Chung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chungthehao/Webpack-VP/issues"
+  },
+  "homepage": "https://github.com/chungthehao/Webpack-VP#readme",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
