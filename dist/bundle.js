@@ -98,9 +98,12 @@ module.exports = __webpack_require__(1);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hello_world__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _add_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+
 
 
 Object(_hello_world__WEBPACK_IMPORTED_MODULE_0__["default"])();
+Object(_add_image__WEBPACK_IMPORTED_MODULE_1__["default"])();
 
 
 /***/ }),
@@ -115,6 +118,36 @@ function helloWorld() {
 
 /* harmony default export */ __webpack_exports__["default"] = (helloWorld);
 
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Hao_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+
+
+function addImage() {
+  const img = document.createElement("img");
+  img.alt = "Handsome Boy";
+  img.width = 300;
+  img.src = _Hao_jpg__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+  const body = document.querySelector("body");
+  body.appendChild(img);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (addImage);
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "cd7e0f1c8cc203edc51893c21667b465.jpg");
 
 /***/ })
 /******/ ]);
