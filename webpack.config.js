@@ -41,6 +41,14 @@ module.exports = {
   plugins: [
     new TerserPlugin(), // Giảm dung lượng file bundle.js
     new MiniCssExtractPlugin({ filename: "styles.[contenthash].css" }), // Tách code CSS trong file bundle.js ra thành 1 file riêng
-    new CleanWebpackPlugin(), // Mặc định (ko truyền param): Xóa sạch file ở module.exports.out.path trước khi build
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [
+        "**/*", // Giữ lại behavior của default
+        path.join(process.cwd(), "build/**/*"), // Giả sử muốn xóa tất cả mọi thứ trong folder 'build'
+      ],
+    }), // Mặc định (ko truyền param): Xóa sạch file ở module.exports.out.path trước khi build
   ],
 };
+
+// console.log("DEBUG", path.join(process.cwd(), "build/**/*")); // H:\Webpack-VP\build\**\*
+// console.log("DEBUG", process.cwd()); // H:\Webpack-VP
