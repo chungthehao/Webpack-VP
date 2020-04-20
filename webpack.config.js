@@ -48,7 +48,13 @@ module.exports = {
         path.join(process.cwd(), "build/**/*"), // Giả sử muốn xóa tất cả mọi thứ trong folder 'build'
       ],
     }), // Mặc định (ko truyền param): Xóa sạch file ở module.exports.out.path trước khi build
-    new HtmlWebpackPlugin(), // Tự tạo ra file html, tự update luôn tên mới của file css, js
+    new HtmlWebpackPlugin({
+      title: "Hello Webpack!",
+      filename: "sub-folder/custom_filename.html", // bên trong folder 'dist'
+      meta: {
+        description: "Some description...",
+      },
+    }), // Tự tạo ra file html, tự update luôn tên mới của file css, js
   ],
 };
 
