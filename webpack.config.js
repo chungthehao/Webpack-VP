@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: ["./src/index.js"],
   output: {
-    filename: "bundle.js",
+    filename: "bundle.[contenthash].js",
     path: path.resolve(__dirname, "./dist"),
     publicPath: "dist/",
   },
@@ -39,6 +39,6 @@ module.exports = {
   },
   plugins: [
     new TerserPlugin(), // Giảm dung lượng file bundle.js
-    new MiniCssExtractPlugin({ filename: "styles.css" }), // Tách code CSS trong file bundle.js ra thành 1 file riêng
+    new MiniCssExtractPlugin({ filename: "styles.[contenthash].css" }), // Tách code CSS trong file bundle.js ra thành 1 file riêng
   ],
 };
