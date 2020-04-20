@@ -1,5 +1,6 @@
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin"); // Giảm dung lượng file bundle
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: ["./src/index.js"],
@@ -17,11 +18,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"], // webpack chạy từ phải sang trái
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"], // webpack chạy từ phải sang trái
       },
       {
         test: /\.js$/,
@@ -36,5 +37,8 @@ module.exports = {
       },
     ],
   },
-  plugins: [new TerserPlugin()],
+  plugins: [
+    new TerserPlugin(), // Giảm dung lượng file bundle.js
+    new MiniCssExtractPlugin({ filename: "styles.css" }), // Tách code CSS trong file bundle.js ra thành 1 file riêng
+  ],
 };
