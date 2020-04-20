@@ -37,6 +37,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.hbs$/,
+        use: ["handlebars-loader"],
+      },
     ],
   },
   plugins: [
@@ -49,11 +53,10 @@ module.exports = {
       ],
     }), // Mặc định (ko truyền param): Xóa sạch file ở module.exports.out.path trước khi build
     new HtmlWebpackPlugin({
-      title: "Hello Webpack!",
-      meta: {
-        description: "Some description...",
-      },
-    }), // Tự tạo ra file html, tự update luôn tên mới của file css, js
+      template: "src/index.hbs",
+      title: "Hello Webpack!", // cho biến htmlWebpackPlugin.options.title ở index.hbs
+      description: "Some description...", // cho biến htmlWebpackPlugin.options.description ở index.hbs
+    }), // Tự tạo ra file html (nếu ko có dùng template), tự chèn file css, js luôn!
   ],
 };
 
