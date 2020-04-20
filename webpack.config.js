@@ -50,7 +50,6 @@ module.exports = {
     }), // Mặc định (ko truyền param): Xóa sạch file ở module.exports.out.path trước khi build
     new HtmlWebpackPlugin({
       title: "Hello Webpack!",
-      filename: "sub-folder/custom_filename.html", // bên trong folder 'dist'
       meta: {
         description: "Some description...",
       },
