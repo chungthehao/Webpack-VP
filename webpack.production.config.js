@@ -14,6 +14,11 @@ module.exports = {
     publicPath: "",
   },
   mode: "production", // none / production / development
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+  },
   module: {
     rules: [
       {
@@ -51,14 +56,14 @@ module.exports = {
     new CleanWebpackPlugin(), // Mặc định (ko truyền param): Xóa sạch file ở module.exports.out.path trước khi build
     new HtmlWebpackPlugin({
       filename: "hello-world.html",
-      chunks: ["hello-world"], // match với key của entry để lấy đúng file bundle js, css
+      chunks: ["hello-world", "vendors~hello-world~me"], // Chọn các chunks sau khi build ở terminal
       template: "src/page-template.hbs",
       title: "Hello Webpack!", // cho biến htmlWebpackPlugin.options.title ở index.hbs
       description: "Some description...", // cho biến htmlWebpackPlugin.options.description ở index.hbs
     }), // Tự tạo ra file html (nếu ko có dùng template), tự chèn file css, js luôn!
     new HtmlWebpackPlugin({
       filename: "me.html",
-      chunks: ["me"], // match với key của entry để lấy đúng file bundle js, css
+      chunks: ["me", "vendors~hello-world~me"], // Chọn các chunks sau khi build ở terminal
       template: "src/page-template.hbs",
       title: "It's me!", // cho biến htmlWebpackPlugin.options.title ở index.hbs
       description: "Some description...", // cho biến htmlWebpackPlugin.options.description ở index.hbs
