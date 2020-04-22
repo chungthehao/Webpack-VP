@@ -9,7 +9,7 @@ module.exports = {
     me: "./src/me.js",
   },
   output: {
-    filename: "[name].[contenthash].js",
+    filename: "[name].[contenthash].js", // [name] tương ứng key của entry
     path: path.resolve(__dirname, "./dist"),
     publicPath: "",
   },
@@ -47,11 +47,20 @@ module.exports = {
   },
   plugins: [
     // new TerserPlugin(), // Giảm dung lượng file bundle.js (mode = production, default tự có)
-    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }), // Tách code CSS trong file bundle.js ra thành 1 file riêng
+    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }), // Tách code CSS trong file bundle.js ra thành 1 file riêng; [name] tương ứng key của entry
     new CleanWebpackPlugin(), // Mặc định (ko truyền param): Xóa sạch file ở module.exports.out.path trước khi build
     new HtmlWebpackPlugin({
-      template: "src/index.hbs",
+      filename: "hello-world.html",
+      chunks: ["hello-world"], // match với key của entry để lấy đúng file bundle js, css
+      template: "src/page-template.hbs",
       title: "Hello Webpack!", // cho biến htmlWebpackPlugin.options.title ở index.hbs
+      description: "Some description...", // cho biến htmlWebpackPlugin.options.description ở index.hbs
+    }), // Tự tạo ra file html (nếu ko có dùng template), tự chèn file css, js luôn!
+    new HtmlWebpackPlugin({
+      filename: "me.html",
+      chunks: ["me"], // match với key của entry để lấy đúng file bundle js, css
+      template: "src/page-template.hbs",
+      title: "It's me!", // cho biến htmlWebpackPlugin.options.title ở index.hbs
       description: "Some description...", // cho biến htmlWebpackPlugin.options.description ở index.hbs
     }), // Tự tạo ra file html (nếu ko có dùng template), tự chèn file css, js luôn!
   ],
