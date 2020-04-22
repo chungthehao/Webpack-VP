@@ -4,9 +4,12 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: ["./src/index.js"],
+  entry: {
+    "hello-world": "./src/hello-world.js",
+    me: "./src/me.js",
+  },
   output: {
-    filename: "bundle.[contenthash].js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "./dist"),
     publicPath: "",
   },
@@ -44,7 +47,7 @@ module.exports = {
   },
   plugins: [
     // new TerserPlugin(), // Giảm dung lượng file bundle.js (mode = production, default tự có)
-    new MiniCssExtractPlugin({ filename: "styles.[contenthash].css" }), // Tách code CSS trong file bundle.js ra thành 1 file riêng
+    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }), // Tách code CSS trong file bundle.js ra thành 1 file riêng
     new CleanWebpackPlugin(), // Mặc định (ko truyền param): Xóa sạch file ở module.exports.out.path trước khi build
     new HtmlWebpackPlugin({
       template: "src/index.hbs",
