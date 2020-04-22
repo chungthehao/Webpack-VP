@@ -1,13 +1,11 @@
 const path = require("path");
-const TerserPlugin = require("terser-webpack-plugin"); // Giảm dung lượng file bundle
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: ["./src/index.js"],
   output: {
-    filename: "bundle.[contenthash].js",
+    filename: "bundle.js",
     path: path.resolve(__dirname, "./dist"),
     publicPath: "",
   },
@@ -20,11 +18,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"], // webpack chạy từ phải sang trái
+        use: ["style-loader", "css-loader", "sass-loader"], // webpack chạy từ phải sang trái
       },
       {
         test: /\.js$/,
@@ -44,14 +42,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new TerserPlugin(), // Giảm dung lượng file bundle.js
-    new MiniCssExtractPlugin({ filename: "styles.[contenthash].css" }), // Tách code CSS trong file bundle.js ra thành 1 file riêng
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        "**/*", // Giữ lại behavior của default
-        path.join(process.cwd(), "build/**/*"), // Giả sử muốn xóa tất cả mọi thứ trong folder 'build'
-      ],
-    }), // Mặc định (ko truyền param): Xóa sạch file ở module.exports.out.path trước khi build
+    new CleanWebpackPlugin(), // Mặc định (ko truyền param): Xóa sạch file ở module.exports.out.path trước khi build
     new HtmlWebpackPlugin({
       template: "src/index.hbs",
       title: "Hello Webpack!", // cho biến htmlWebpackPlugin.options.title ở index.hbs
