@@ -3,6 +3,7 @@ import "./my-image.scss";
 
 class MyImage {
   render() {
+    console.log("Hao", Hao);
     const img = document.createElement("img");
     img.alt = "Handsome Boy";
     img.classList.add("my-image");
