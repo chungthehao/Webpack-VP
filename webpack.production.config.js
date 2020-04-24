@@ -11,7 +11,7 @@ module.exports = {
   output: {
     filename: "[name].[contenthash].js", // [name] tương ứng key của entry
     path: path.resolve(__dirname, "./dist"),
-    publicPath: "",
+    publicPath: "/static",
   },
   mode: "production", // none / production / development
   optimization: {
