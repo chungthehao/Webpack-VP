@@ -1,0 +1,18 @@
+{
+  "extends": "eslint:recommended", // common use, have check mark (read docs)
+  "parser": "babel-eslint", // not complain about class properties (not included in ESMAScript yet)
+  "parserOptions": {
+    "ecmaVersion": 6, // not complain ES6 syntax
+    "sourceType": "module" // not complain import/export
+  },
+  "env": {
+    "es6": true, // enables ES6 syntax automatically, not complain 'Symbol'
+    "node": true, // not complain 'process'
+    "browser": true // not complain 'document'
+  },
+  "rules": {
+    "no-console": 0,
+    "no-unused-vars": 0,
+    "no-sparse-arrays": 0
+  }
+}
