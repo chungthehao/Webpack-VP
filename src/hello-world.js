@@ -1,7 +1,7 @@
 import "bootstrap"; // js part
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css"; // ready to use css
 
-import "./index.scss";
+import "./index.scss"; // include bootstrap scss for further custom
 
 import HelloWorldButton from "./components/hello-world-button/hello-world-button";
 import Heading from "./components/heading/heading";

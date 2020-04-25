@@ -22,6 +22,8 @@
     url("./fonts/OpenSans-SemiBold.woff2") format("woff2");
 }
 
+@import "~bootstrap/scss/bootstrap";
+
 html {
   body {
     font-family: "Open Sans", Arial, Helvetica, sans-serif;

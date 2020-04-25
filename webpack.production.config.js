@@ -33,7 +33,22 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"], // webpack chạy từ phải sang trái
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "postcss-loader", // Convert modern css to sth that most browsers can understand
+            options: {
+              plugins: function () {
+                return [
+                  require("precss"), // let you use latest CSS features like color functions, logical and custom properties, media query ranges and image set
+                  require("autoprefixer"), // Parse css and add vendro prefixes to CSS rules
+                ];
+              },
+            },
+          },
+          "sass-loader",
+        ], // webpack chạy từ phải sang trái
       },
       {
         test: /\.js$/,
