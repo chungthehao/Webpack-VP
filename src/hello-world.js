@@ -1,3 +1,6 @@
+import "bootstrap"; // js part
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./index.scss";
 
 import HelloWorldButton from "./components/hello-world-button/hello-world-button";
