@@ -1,13 +1,15 @@
+import $ from "jquery";
+
 import "./heading.scss";
 
 class Heading {
   render(pageName) {
-    const body = document.querySelector("body");
+    const body = $("body");
 
-    const h1 = document.createElement("h1");
-    h1.innerHTML = `Webpack is awesome. This is "${pageName}" page.`;
+    const h1 = $("<h1>");
+    h1.text(`Webpack is awesome. This is "${pageName}" page.`);
 
-    body.appendChild(h1);
+    body.append(h1);
   }
 }
 
